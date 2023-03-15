@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
+/*move the timer to the top right corner*/
+.timer {
+    display: flex;
+    align-content: right;
+}
+
+/*this is where we want this one*/
+.quiz {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
