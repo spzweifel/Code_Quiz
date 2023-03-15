@@ -2,15 +2,20 @@
     box-sizing: border-box;
 }
 
-/*move the timer to the top right corner*/
-.timer {
+.quiz {
     display: flex;
-    align-content: right;
+    justify-content: center;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*move the timer to the top right corner*/
+/*.timer {
+    display: flex;
+    justify-content: space-between;
 }
 
 /*this is where we want this one*/
-.quiz {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
