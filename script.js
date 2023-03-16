@@ -1,23 +1,15 @@
-var timeEl = document.querySelector(".timer");
-
-var secondsLeft = 60;
-
-
-//work on the timer check web APIs lesson 10
+//this is the timer function. leave it alone except to move it to the top right corner
 function countdown() {
-    var timerInterval = setInterval(function() {
-      secondsLeft--;
-  
-      if(secondsLeft === 0) {
-        clearInterval(timerInterval);
-        sendMessage();
+  var seconds = 60;
+  function tick() {
+      var counter = document.getElementById("countdown");
+      seconds--;
+      counter.innerHTML = "0:" + (seconds < 10 ? "0" : "") + String(seconds);
+      if( seconds > 0 ) {
+          setTimeout(tick, 1000);
       }
-  
-    }, 1000);
   }
+  tick();
+}
 
-  function sendMessage() {
-    timeEl.textContent = "Times up!";
-  }
-
-  setTime();
+countdown();
