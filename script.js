@@ -1,5 +1,6 @@
 //this is the timer function. leave it alone except to move it to the top right corner
 function countdown() {
+ 
   var seconds = 60;
   function tick() {
       var counter = document.getElementById("countdown");
