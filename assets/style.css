@@ -5,12 +5,52 @@
 .quiz {
     display: flex;
     justify-content: center;
+    text-decoration: underline;
 }
 
 .banner {
     display: flex;
     justify-content: space-between;
 }
+
+.question1 {
+    display: flex;
+    justify-content: center;
+}
+
+.question2 {
+    display: flex;
+    justify-content: center;
+}
+
+.question3 {
+    display: flex;
+    justify-content: center;
+}
+
+.question4 {
+    display: flex;
+    justify-content: center;
+}
+
+/*.answers {
+    display: flex;
+    justify-content: center;
+}*/
+
+
+/*this is for the highscores page*/
+.highscores-pg {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 50px; 
+}
+
+.hide {
+    display: none;
+}
+
 
 /*move the timer to the top right corner*/
 /*.timer {
