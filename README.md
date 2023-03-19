@@ -9,6 +9,8 @@ MIT License
 
 ## Screenshot
 
-
+![Alt text](Screenshots/Quiz.png)
 
 ## Link to Deployed Webpage
+
+https://spzweifel.github.io/Code_Quiz/
