@@ -12,9 +12,9 @@ var questions = [
     question: "What is a boolean value?",
     choices: [
       "A true or false statement",
-      "false",
-      "false",
-      "false"
+      "An if statement",
+      "A for loop",
+      "The basis of javascript"
     ],
     answer: "A true or false statement"
   }
@@ -22,40 +22,45 @@ var questions = [
   {
     question: "What is an attribute?",
     choices: [
-      "true",
-      "false",
-      "false",
-      "false"
+      "Provides additional information about elements",
+      "A personal characteristic",
+      "Establishes a title",
+      "It runs a function"
     ],
-    answer: "true"
+    answer: "Provides additional information about elements"
   }
   ,
-  // {
-  //   question: "What is pseudocode?",
-  //   choices: [
-  //     "false",
-  //     "false",
-  //     "true",
-  //     "false"
-  //   ],
-  //   answer: "true"
-  // }
-  // ,
-  // {
-  //   question: "What is an attribute?",
-  //   choices: [
-  //     "false",
-  //     "false",
-  //     "false",
-  //     "true"
-  //   ],
-  //   answer: "true"
-  // }
+  {
+    question: "What is pseudocode?",
+    choices: [
+      "Fake writing",
+      "It ties together the code",
+      "An artificial and informal language that helps programmers develop    algorithms",
+      "The building blocks of computers"
+    ],
+    answer: "An artificial and informal language that helps programmers develop    algorithms"
+  }
+  ,
+  {
+    question: "What is a wireframe?",
+    choices: [
+      "Glasses",
+      "A bunch of boxes that give a false sense of ambition",
+      "Scaffolding around a building",
+      "a schematic or blueprint that is useful for helping you think about the structure you're building"
+    ],
+    answer: "a schematic or blueprint that is useful for helping you think about the structure you're building"
+  }
 ];
 
 function endgame() {
   question.setAttribute("class", "hide")
-  initialsinput.classList.remove("hide")
+  redirect()
+  //initialsinput.classList.remove("hide")
+}
+
+function redirect () {
+  return window.location = "./highscores.html"
 }
 
 function submitinitials() {

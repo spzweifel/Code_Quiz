@@ -51,7 +51,10 @@
     display: none;
 }
 
-
+#countdown {
+    display: flex;
+    justify-content: flex-end;
+}
 /*move the timer to the top right corner*/
 /*.timer {
     display: flex;
