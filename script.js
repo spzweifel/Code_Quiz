@@ -116,3 +116,30 @@ function countdown() {
 }
 
 startbutton.addEventListener("click", startquiz)
+
+
+function doFirst() {
+  var button = document.getElementById("button2")
+  button.addEventListener("click", save)
+  display()
+}
+
+function save() {
+  var value = document.getElementById("value").value
+  sessionStorage.setItem(value)
+  display()
+  //value.value = ""
+  console.log(value)
+}
+
+function display() {
+  var display_data = document.getElementById("display_data")
+  display_data.innerHTML = "value"
+  for (var i = 0; i < sessionStorage.length; i++) {
+    var a = sessionStorage.value(i)
+    var b = sessionStorage.getItem(a)
+    display_data.innerHTML += a + b 
+  }
+}
+
+window.addEventListener("load", doFirst)

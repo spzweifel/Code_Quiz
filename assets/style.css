@@ -55,10 +55,9 @@
     display: flex;
     justify-content: flex-end;
 }
-/*move the timer to the top right corner*/
-/*.timer {
-    display: flex;
-    justify-content: space-between;
-}
 
+.userinput {
+    display: flex;
+    justify-content: center;
+}
 
