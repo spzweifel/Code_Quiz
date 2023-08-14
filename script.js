@@ -1,9 +1,9 @@
-var startbutton= document.querySelector(".start")
+var startButton= document.querySelector(".start")
 var question = document.querySelector(".question1")
-var initialsinput = document.querySelector(".initialsinput")
+var initialsInput = document.querySelector(".initialsinput")
 var answers = document.querySelector(".answers")
 var submit = document.querySelector(".submit")
-var currentquestion = 0
+var currentQuestion = 0
 var seconds = 60;
 
 
@@ -53,7 +53,7 @@ var questions = [
   }
 ];
 
-function endgame() {
+function endGame() {
   question.setAttribute("class", "hide")
   redirect()
   //initialsinput.classList.remove("hide")
@@ -63,50 +63,59 @@ function redirect () {
   return window.location = "./highscores.html"
 }
 
-function submitinitials() {
-  initialsinput.addEventListener()
-  //initialsinput.setAttribute("type", "submit")
+function submitInitials() {
+  var initialsInput = document.querySelector(".initials");
+  initialsInput.addEventListener("click", submit);
 }
 
-function checksanswer() {
+
+function checksAnswer() {
   console.log(this.dataset.val)
-  if (this.dataset.val === questions[currentquestion].answer) {
-    currentquestion++
+  if (this.dataset.val === questions[currentQuestion].answer) {
+    currentQuestion++
   } else {
     seconds = seconds - 10
     if (seconds < 0) {
       seconds === 0
     }
   }
-  if (seconds <= 0 || currentquestion === questions.length) {
-    endgame()
+  if (seconds <= 0 || currentQuestion === questions.length) {
+    endGame()
   } else {
-    showquestion()
+    showQuestion()
   } 
 }
 
-function showquestion() {
-  question.textContent = questions[currentquestion].question 
+function showQuestion() {
+  question.textContent = questions[currentQuestion].question 
   answers.textContent = ""
-  for (let index = 0; index < questions[currentquestion].choices.length; index++) {
+  for (let index = 0; index < questions[currentQuestion].choices.length; index++) {
     var li = document.createElement("li")
-    li.textContent = questions[currentquestion].choices[index]
-    li.setAttribute("data-val", questions[currentquestion].choices[index])
-    li.addEventListener("click", checksanswer)
+    li.textContent = questions[currentQuestion].choices[index]
+    li.setAttribute("data-val", questions[currentQuestion].choices[index])
+    li.addEventListener("click", checksAnswer)
     answers.appendChild(li)
   }
 }
 
-function startquiz() {
-  countdown()
-  showquestion()
+function startQuiz() {
+  //this is supposed to hide the start button after the code starts
+  startButton.classList.add("hide");
+  countDown()
+  showQuestion()
 }
 
 //this is the timer function. leave it alone except to move it to the top right corner
-function countdown() {
+function countDown() {
   function tick() {
       var counter = document.getElementById("countdown");
       seconds--;
+
+      if (seconds <= 0) {
+        window.location.assign("./highscores.html");
+        return;
+      }
+
       counter.innerHTML = "0:" + (seconds < 10 ? "0" : "") + String(seconds);
       if( seconds > 0 ) {
           setTimeout(tick, 1000);
@@ -115,28 +124,38 @@ function countdown() {
   tick();
 }
 
-startbutton.addEventListener("click", startquiz)
+startButton.addEventListener("click", startQuiz)
 
-
+//there is no button2 variable
 function results() {
-  var button = document.getElementById("button2")
+  var button = document.querySelector(".button2");
   button.addEventListener("click", save)
   display()
 }
 
 function save() {
-  var value = document.getElementById("initials").value
-  sessionStorage.setItem(initials)
+  var initials = document.getElementById("initials").value
+  sessionStorage.setItem("userInitials", initials)
   display()
 }
 
 function display() {
-  var display_data = document.getElementById("display_data")
-  display_data.innerHTML = "initials"
+  console.log("Display function is running");
+  var displaydata = document.getElementById("display_data")
+  displaydata.innerHTML = "";
   for (var i = 0; i < sessionStorage.length; i++) {
-    var a = sessionStorage.initials(i)
-    var b = sessionStorage.getItem(a)
+    var initials = sessionStorage.key(i)
+    var score = sessionStorage.getItem(initials)
+
+    var scoreEntry = document.createElement("div");
+    scoreEntry.textContent = "Initials: " + initials + " - Score: " + score;
+
+    displaydata.appendChild(scoreEntry);
   }
 }
 
-window.addEventListener("load", results)
+document.addEventListener("DOMContentLoaded", function () {
+  display();
+  submitInitials();
+  results();
+});
